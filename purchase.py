@@ -71,7 +71,7 @@ class Purchase(metaclass=PoolMeta):
             moves = _check_moves(purchase)
             picks = [shipment for shipment in
                 list(purchase.shipments) + list(purchase.shipment_returns)
-                if shipment.state in ['assigned', 'received', 'assigned']]
+                if shipment.state in ('assigned', 'received')]
             if moves or picks:
                 names = ', '.join(m.rec_name for m in (moves + picks)[:5])
                 if len(names) > 5:
@@ -81,9 +81,9 @@ class Purchase(metaclass=PoolMeta):
                     names=names))
 
             Shipment.cancel([shipment for shipment in purchase.shipments
-                if shipment.state == 'draft'])
+                if shipment.state in ('draft', 'waiting')])
             ShipmentReturn.cancel([shipment for shipment in purchase.shipment_returns
-                if shipment.state == 'draft'])
+                if shipment.state in ('draft', 'waiting')])
 
             # ensure has all moves from purchase Lines
             moves = [move for line in purchase.lines for move in line.moves

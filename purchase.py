@@ -71,7 +71,7 @@ class Purchase(metaclass=PoolMeta):
             moves = _check_moves(purchase)
             picks = [shipment for shipment in
                 list(purchase.shipments) + list(purchase.shipment_returns)
-                if shipment.state in ('assigned', 'received')]
+                if shipment.state not in ('waiting', 'draft', 'done')]
             if moves or picks:
                 names = ', '.join(m.rec_name for m in (moves + picks)[:5])
                 if len(names) > 5:

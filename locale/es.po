@@ -1,0 +1,31 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.purchase,ignored_moves:"
+msgid "Ignored Moves"
+msgstr "Movimientos ignorados"
+
+msgctxt "model:ir.action,name:act_purchase_create_pending_moves_wizard"
+msgid "Create Pending Moves"
+msgstr "Crea movimientos pendientes"
+
+msgctxt "model:ir.message,text:msg_can_not_revoke"
+msgid ""
+"You cannot revoke \"%(record)s\" because there are moves that are not in Cancel, Draft or Done state:\n"
+"\"%(names)s\"."
+msgstr ""
+"No puede anular \"%(record)s\" porque hay movimientos no estan en el estado cancelado, borrador o finalizado:\n"
+"\"%(names)s\"."
+
+msgctxt "model:ir.model.button,confirm:purchase_revoke_button"
+msgid "Are you sure you want to revoke purchases?"
+msgstr "¿Está seguro que desea anular las compras?"
+
+msgctxt "model:ir.model.button,string:purchase_create_pending_moves_button"
+msgid "Create Pending Moves"
+msgstr "Crea movimientos pendientes"
+
+msgctxt "model:ir.model.button,string:purchase_revoke_button"
+msgid "Revoke"
+msgstr "Anular"

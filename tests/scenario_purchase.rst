@@ -216,7 +216,7 @@ Receive 3 products::
     >>> shipment.click('done')
     >>> purchase.reload()
     >>> purchase.shipment_state
-    'waiting'
+    'partially shipped'
     >>> len(purchase.moves) == 2
     True
 
@@ -259,5 +259,5 @@ Purchase and raise UserError::
         ...
     trytond.exceptions.UserError:: ...
     >>> purchase.reload()
-    >>> purchase.shipment_state == 'waiting'
-    True
+    >>> purchase.shipment_state
+    'partially shipped'

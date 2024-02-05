@@ -168,7 +168,7 @@ Purchase 5 products with an invoice method 'on shipment'::
 Revoke purchase and create pending moves::
 
     >>> purchase.click('revoke')
-    >>> purchase.shipment_state == 'received'
+    >>> purchase.shipment_state == 'none'
     True
     >>> [m.state for m in purchase.moves] == ['cancelled', 'cancelled', 'cancelled']
     True

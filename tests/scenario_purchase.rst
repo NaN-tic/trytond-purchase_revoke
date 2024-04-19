@@ -216,7 +216,7 @@ Receive 3 products::
     ...     shipment.incoming_moves.append(incoming_move)
     >>> shipment.save()
     >>> shipment.click('receive')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> purchase.reload()
     >>> purchase.shipment_state
     'partially shipped'

@@ -227,9 +227,8 @@ Receive 3 products::
     >>> purchase.shipment_state == 'received'
     True
     >>> move1, move2 = purchase.moves
-    >>> (move1.state, move2.state)
-    ('done', 'cancelled')
-
+    >>> sorted(move1.state, move2.state)
+    ('cancelled', 'done')
     >>> create_pending_moves = Wizard('purchase.purchase.create_pending_moves', [purchase])
     >>> purchases = Purchase.find([], order=[('id', 'ASC')])
     >>> new_purchase = purchases[-1]

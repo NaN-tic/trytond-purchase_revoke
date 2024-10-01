@@ -149,7 +149,7 @@ class PurchaseCreatePendingMoves(Wizard):
             def default_quantity(data):
                 product_id = data.get('product')
                 quantity = data.get('quantity')
-                if product_id:
+                if product_id and products.get(product_id):
                     return products[product_id]
                 return quantity
 

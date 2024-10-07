@@ -157,7 +157,7 @@ class PurchaseCreatePendingMoves(Wizard):
                 product_id = data.get('product')
                 unit_id = data.get('unit')
                 if product_id:
-                    return purchase_units[product_id]
+                    return purchase_units.get(product_id)
                 return unit_id
 
             Line.copy(purchase.lines, default={

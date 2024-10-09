@@ -17,10 +17,6 @@ msgctxt "field:purchase.purchase,ignored_moves:"
 msgid "Ignored Moves"
 msgstr "Moviments ignorats"
 
-msgctxt "model:ir.action,name:"
-msgid "Create Pending Moves"
-msgstr "Crea moviments pendents"
-
 msgctxt "model:ir.action,name:act_purchase_create_pending_moves_wizard"
 msgid "Create Pending Moves"
 msgstr "Crea moviments pendents"

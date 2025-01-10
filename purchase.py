@@ -103,6 +103,7 @@ class Purchase(metaclass=PoolMeta):
                 session_id, _, _ = HandleShipmentException.create()
                 handle_shipment_exception = HandleShipmentException(session_id)
                 handle_shipment_exception.ask.recreate_moves = []
+                handle_shipment_exception.ask.ignore_moves = pending_moves
                 handle_shipment_exception.ask.domain_moves = pending_moves
                 handle_shipment_exception.transition_handle()
                 HandleShipmentException.delete(session_id)

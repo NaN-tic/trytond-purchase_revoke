@@ -242,3 +242,31 @@ class Test(unittest.TestCase):
 
         purchase.reload()
         self.assertEqual(purchase.shipment_state, 'partially shipped')
+
+        # Purchase and revoke manual invoice
+        purchase = Purchase()
+        purchase.party = supplier
+        purchase.payment_term = payment_term
+        purchase.invoice_method = 'manual'
+        purchase_line = PurchaseLine()
+        purchase.lines.append(purchase_line)
+        purchase_line.product = product
+        purchase_line.quantity = 10.0
+        purchase.click('quote')
+        purchase.click('confirm')
+        self.assertEqual(purchase.state, 'processing')
+        self.assertEqual(purchase.shipment_state, 'waiting')
+        self.assertEqual(purchase.invoice_state, 'none')
+
+        purchase.click('revoke')
+        purchase.reload()
+
+        self.assertEqual(purchase.state, 'done')
+        self.assertEqual(purchase.shipment_state, 'none')
+        self.assertEqual(purchase.invoice_state, 'none')
+        self.assertEqual(len(purchase.moves), 1)
+        self.assertEqual(len(purchase.shipments), 0)
+        self.assertEqual(len(purchase.shipment_returns), 0)
+        self.assertEqual(len(purchase.invoices), 1)
+        invoice, = purchase.invoices
+        self.assertEqual(invoice.state, 'cancelled')

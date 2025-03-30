@@ -49,6 +49,11 @@ class Purchase(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     def revoke(cls, purchases):
+        cls.handle_shipments(purchases)
+        cls.handle_invoices(purchases)
+
+    @classmethod
+    def handle_shipments(cls, purchases):
         pool = Pool()
         Move = pool.get('stock.move')
         Shipment = pool.get('stock.shipment.in')
@@ -107,6 +112,33 @@ class Purchase(metaclass=PoolMeta):
                 handle_shipment_exception.ask.domain_moves = pending_moves
                 handle_shipment_exception.transition_handle()
                 HandleShipmentException.delete(session_id)
+
+    @classmethod
+    def handle_invoices(cls, purchases):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        HandleInvoiceException = pool.get(
+            'purchase.handle.invoice.exception', type='wizard')
+
+        for purchase in purchases:
+            if purchase.invoice_method == 'manual':
+                cls.manual_invoice([purchase])
+            Invoice.cancel([invoice for invoice in purchase.invoices
+                if invoice.state == 'draft'])
+
+            cancel_invoices = [invoice for invoice in purchase.invoices
+                if invoice.state == 'cancelled']
+            skip = set(purchase.invoices_ignored + purchase.invoices_recreated)
+            pending_invoices = [i for i in cancel_invoices if not i in skip]
+
+            with Transaction().set_context(active_model=cls.__name__,
+                    active_ids=[purchase.id], active_id=purchase.id):
+                session_id, _, _ = HandleInvoiceException.create()
+                handle_invoice_exception = HandleInvoiceException(session_id)
+                handle_invoice_exception.ask.recreate_invoices = []
+                handle_invoice_exception.ask.domain_invoices = pending_invoices
+                handle_invoice_exception.transition_handle()
+                HandleInvoiceException.delete(session_id)
 
     @classmethod
     @ModelView.button_action('purchase_revoke.act_purchase_create_pending_moves_wizard')

@@ -136,6 +136,7 @@ class Purchase(metaclass=PoolMeta):
                 session_id, _, _ = HandleInvoiceException.create()
                 handle_invoice_exception = HandleInvoiceException(session_id)
                 handle_invoice_exception.ask.recreate_invoices = []
+                handle_invoice_exception.ask.ignore_invoices = pending_invoices
                 handle_invoice_exception.ask.domain_invoices = pending_invoices
                 handle_invoice_exception.transition_handle()
                 HandleInvoiceException.delete(session_id)

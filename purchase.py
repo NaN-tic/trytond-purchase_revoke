@@ -13,7 +13,7 @@ from trytond.wizard import StateAction, Wizard
 class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
 
-    ignored_moves = fields.Function(fields.Many2Many('stock.move', None,
+    ignored_moves = fields.Function(fields.One2Many('stock.move', None,
         'Ignored Moves'), 'get_ignored_moves')
 
     @classmethod

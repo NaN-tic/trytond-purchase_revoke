@@ -3,6 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data depends="purchase">
+        <record model="ir.ui.icon" id="create_pending_moves_icon">
+            <field name="name">purchase_revoke-create_pending_moves</field>
+            <field name="path">icons/purchase_revoke-create_pending_moves.svg</field>
+        </record>
         <record model="ir.ui.view" id="purchase_view_form">
             <field name="model">purchase.purchase</field>
             <field name="inherit" ref="purchase.purchase_view_form"/>

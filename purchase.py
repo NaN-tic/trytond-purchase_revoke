@@ -27,11 +27,13 @@ class Purchase(metaclass=PoolMeta):
                     'invisible': ~Eval('state').in_(
                         ['confirmed', 'processing']),
                     'depends': ['state'],
+                    'icon': 'tryton-cancel',
                     },
                 'create_pending_moves': {
                     'invisible': (~Eval('state').in_(['processing', 'done'])
                         | ~Bool(Eval('ignored_moves', []))),
                     'depends': ['state', 'ignored_moves'],
+                    'icon': 'purchase_revoke-create_pending_moves',
                     },
                 })
 

@@ -1,0 +1,37 @@
+#
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:purchase.purchase,ignored_moves:"
+msgid "Ignored Moves"
+msgstr "已忽略移动"
+
+msgctxt "model:ir.action,name:act_purchase_create_pending_moves_wizard"
+msgid "Create Pending Moves"
+msgstr "创建待处理移动"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_can_not_revoke"
+msgid ""
+"You cannot revoke \"%(record)s\" because there are moves that are not in Cancel, Draft or Done state:\n"
+"\"%(names)s\"."
+msgstr ""
+"无法撤销“%(record)s”，因为存在状态不为“已取消”“草稿”或“已完成”的移动：\n"
+"“%(names)s”。"
+
+msgctxt "model:ir.model.button,confirm:purchase_revoke_button"
+msgid "Are you sure you want to revoke purchases?"
+msgstr "确定要撤销采购单吗？"
+
+msgctxt "model:ir.model.button,string:purchase_create_pending_moves_button"
+msgid "Create Pending Moves"
+msgstr "创建待处理移动"
+
+msgctxt "model:ir.model.button,string:purchase_revoke_button"
+msgid "Revoke"
+msgstr "撤销"

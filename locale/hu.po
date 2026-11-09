@@ -1,0 +1,37 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:purchase.purchase,ignored_moves:"
+msgid "Ignored Moves"
+msgstr "Figyelmen kívül hagyott készletmozgások"
+
+msgctxt "model:ir.action,name:act_purchase_create_pending_moves_wizard"
+msgid "Create Pending Moves"
+msgstr "Függőben lévő készletmozgások létrehozása"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_can_not_revoke"
+msgid ""
+"You cannot revoke \"%(record)s\" because there are moves that are not in Cancel, Draft or Done state:\n"
+"\"%(names)s\"."
+msgstr ""
+"A(z) „%(record)s” nem vonható vissza, mert vannak nem Törölt, Piszkozat vagy Kész állapotú készletmozgások:\n"
+"„%(names)s”."
+
+msgctxt "model:ir.model.button,confirm:purchase_revoke_button"
+msgid "Are you sure you want to revoke purchases?"
+msgstr "Biztosan visszavonja a beszerzéseket?"
+
+msgctxt "model:ir.model.button,string:purchase_create_pending_moves_button"
+msgid "Create Pending Moves"
+msgstr "Függőben lévő készletmozgások létrehozása"
+
+msgctxt "model:ir.model.button,string:purchase_revoke_button"
+msgid "Revoke"
+msgstr "Visszavonás"
